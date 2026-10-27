@@ -1,0 +1,759 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Wedding Invitation Studio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Marcellus&family=Pinyon+Script&family=Tiro+Devanagari+Hindi&display=swap">
+<style>
+/* Layout: arched "jharokha" hero, paper cards on ivory, bottom dock on phones, top nav on desktop.
+   One committed light look (ivory, champagne gold, blush), so no dark variant. */
+:root{
+  --ivory:#FBF6EC; --paper:#FFFDF8; --champagne:#EBDBB8; --gold:#B8925A; --gold-deep:#7C5B27;
+  --blush:#F7E1DD; --blush-deep:#E8BDB9; --rose-ink:#8A4352; --ink:#3A2B2B; --muted:#6E5C57;
+  --line:#E4D5B8; --good:#46745A; --warn:#A8501F;
+  --display:'Marcellus','Times New Roman',serif; --script:'Pinyon Script','Snell Roundhand',cursive;
+  --body:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif; --deva:'Tiro Devanagari Hindi','Noto Serif Devanagari',serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background-color:var(--ivory);
+  background-image:radial-gradient(circle at 1px 1px,rgba(184,146,90,.14) 1px,transparent 0);background-size:22px 22px;
+  color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--paper)}
+h1,h2,h3,p{margin:0}
+h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold-deep);outline-offset:2px}
+.in{max-width:1000px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* header + nav */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--paper);border-bottom:1px solid var(--line)}
+.top .in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px}
+.brand{font-family:var(--display);font-size:1.15rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-deep);text-decoration:none;white-space:nowrap}
+.topnav{display:none;gap:4px}
+.topnav a,.dock a{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--muted);border-radius:999px}
+.topnav a{padding:9px 16px;font-size:.95rem}
+.topnav a:hover{background:var(--blush)}
+.topnav a[aria-current="page"]{background:var(--champagne);color:var(--ink)}
+.topnav svg,.dock svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--paper);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.dock .in{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;padding-top:6px;padding-bottom:6px}
+.dock a{flex-direction:column;gap:2px;padding:6px 0;font-size:.72rem;border-radius:12px;min-height:50px;justify-content:center}
+.dock a[aria-current="page"]{color:var(--rose-ink);background:var(--blush)}
+@media(min-width:760px){.dock{display:none}.topnav{display:flex}}
+
+.notice{background:var(--blush);border-bottom:1px solid var(--blush-deep);font-size:.85rem;color:var(--rose-ink)}
+.notice .in{padding-top:8px;padding-bottom:8px}
+.notice strong{font-weight:600}
+
+main .in{padding-top:28px;padding-bottom:104px}
+@media(min-width:760px){main .in{padding-bottom:56px}}
+[data-view]>*+*{margin-top:28px}
+
+/* shared bits */
+.eyebrow{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);font-weight:500}
+.page-head{display:grid;gap:6px}
+.page-head h2{font-size:clamp(1.8rem,5vw,2.4rem);line-height:1.15}
+.page-head p{color:var(--muted);max-width:60ch}
+.orn{display:flex;align-items:center;gap:12px;color:var(--gold);margin:14px auto;max-width:260px}
+.orn::before,.orn::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.orn::after{transform:scaleX(-1)}
+.orn i{width:9px;height:9px;border:1.5px solid var(--gold);transform:rotate(45deg);flex:none}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;background:var(--champagne);color:var(--gold-deep);white-space:nowrap}
+.pill.demo{background:var(--blush);color:var(--rose-ink)}
+.pill.ok{background:#E3EEE5;color:var(--good)}
+.pill.late{background:#F6E1D3;color:var(--warn)}
+.btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px 22px;border-radius:999px;border:1px solid var(--gold);background:transparent;color:var(--gold-deep);text-decoration:none;cursor:pointer;font-weight:500}
+.btn:hover{background:var(--champagne)}
+.btn.primary{background:linear-gradient(180deg,#E8D3A6,#D2B176);color:#2F2118;border-color:#B8925A}
+.btn.primary:hover{background:linear-gradient(180deg,#EEDDB8,#D9BC85)}
+.btn.small{min-height:38px;padding:6px 14px;font-size:.9rem}
+.lbl{display:block;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.field{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:46px;width:100%}
+.field:focus{border-color:var(--gold-deep)}
+.grid2{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.x{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;font-size:1.2rem;line-height:1;flex:none}
+.x:hover{background:var(--blush);color:var(--rose-ink)}
+.empty{color:var(--muted);text-align:center;padding:18px}
+
+/* home */
+.hero{display:flex;justify-content:center;padding-top:8px}
+.arch{width:100%;max-width:600px;text-align:center;border:1.5px solid var(--gold);border-radius:999px 999px 20px 20px;
+  background:linear-gradient(180deg,var(--blush) 0%,var(--paper) 55%);box-shadow:0 0 0 6px var(--ivory),0 0 0 7px var(--champagne);
+  padding:clamp(56px,14vw,96px) clamp(18px,6vw,48px) 36px;margin:8px 0 8px}
+.invoc{font-family:var(--deva);font-size:1.15rem;color:var(--gold-deep)}
+.names{font-family:var(--script);font-weight:400;font-size:clamp(2.9rem,12vw,4.8rem);line-height:1.05;color:var(--rose-ink);margin:10px 0 6px;display:grid;justify-items:center}
+.names .amp{font-family:var(--display);font-size:.4em;color:var(--gold);line-height:1.2}
+.when{font-family:var(--display);font-size:1.25rem}
+.where{color:var(--muted);margin-top:2px}
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:24px auto 22px;max-width:380px}
+.count div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 4px}
+.count b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,6vw,2rem);color:var(--gold-deep);font-variant-numeric:tabular-nums;line-height:1.1}
+.count span{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cd-msg{font-family:var(--display);font-size:1.3rem;color:var(--rose-ink);margin:22px 0}
+.tiles{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))}
+.tile{display:grid;gap:6px;align-content:start;text-decoration:none}
+.tile:hover{border-color:var(--gold)}
+.tile h3{font-size:1.2rem}
+.tile p{color:var(--muted);font-size:.93rem}
+.status-list{display:grid;gap:10px;list-style:none;margin:14px 0 0;padding:0}
+.status-list li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.status-list p{color:var(--muted);font-size:.93rem}
+.status-list b{font-weight:500;color:var(--ink)}
+.status-list .pill{margin-top:2px;min-width:86px;text-align:center}
+
+/* invitation */
+.invite{max-width:560px;margin:0 auto;text-align:center;background:var(--paper);border:1px solid var(--gold);border-radius:6px;padding:12px}
+.invite-in{border:1px solid var(--champagne);padding:clamp(28px,7vw,48px) clamp(16px,5vw,36px);
+  background:radial-gradient(120% 60% at 50% 0%,var(--blush),transparent 70%)}
+.invite .host{color:var(--muted);font-size:.95rem;margin-top:16px}
+.invite .req{font-size:.95rem;color:var(--muted);margin-top:16px}
+.invite .big-date{font-family:var(--display);font-size:1.55rem;margin-top:6px}
+.invite .meta{display:grid;gap:2px;margin-top:12px}
+.invite .meta b{font-weight:500}
+.share{display:grid;gap:14px}
+.share-row{display:flex;flex-wrap:wrap;gap:10px}
+.share-row .field{flex:1 1 220px;min-width:0}
+.note{font-size:.88rem;color:var(--muted)}
+.note.warn{background:var(--blush);border-radius:10px;padding:10px 12px;color:var(--rose-ink)}
+
+/* events */
+.ev-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.ev{display:grid;grid-template-columns:72px 1fr;gap:16px;align-items:start}
+.ev-date{text-align:center;border:1px solid var(--gold);border-radius:12px;padding:8px 0;background:var(--ivory)}
+.ev-date b{display:block;font-family:var(--display);font-weight:400;font-size:1.9rem;line-height:1;color:var(--rose-ink)}
+.ev-date span{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep)}
+.ev h3{font-size:1.35rem}
+.ev dl{margin:8px 0 0;display:grid;gap:4px;font-size:.93rem}
+.ev dt{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ev dd{margin:0 0 4px}
+.ev>div{min-width:0}
+
+/* rsvp */
+.rsvp-form{display:grid;gap:20px}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{padding:0;margin-bottom:8px}
+.choice{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.opt{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-height:50px;cursor:pointer}
+.opt:has(input:checked){border-color:var(--gold-deep);background:var(--blush)}
+.opt input{width:20px;height:20px;accent-color:var(--gold-deep);flex:none}
+.opt small{display:block;color:var(--muted)}
+.stepper{display:inline-flex;align-items:center;gap:10px}
+.stepper button{width:46px;height:46px;border-radius:50%;border:1px solid var(--gold);background:var(--paper);font-size:1.4rem;cursor:pointer;color:var(--gold-deep)}
+.stepper button:hover{background:var(--champagne)}
+.stepper input{width:70px;text-align:center;font-family:var(--display);font-size:1.3rem}
+.err{color:var(--warn);font-size:.9rem;min-height:1.2em}
+.thanks{display:grid;gap:12px;text-align:center;justify-items:center}
+.thanks h3{font-size:1.6rem;color:var(--rose-ink)}
+.thanks dl{display:grid;gap:6px;margin:6px 0;text-align:left;width:100%;max-width:380px}
+.thanks dt{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.thanks dd{margin:0 0 6px}
+
+/* planner */
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:var(--champagne);padding:4px;border-radius:999px}
+.tabs button{border:0;background:transparent;border-radius:999px;min-height:42px;cursor:pointer;color:var(--gold-deep);font-weight:500;font-size:.92rem;padding:0 4px}
+.tabs button[aria-selected="true"]{background:var(--paper);color:var(--ink);box-shadow:0 1px 3px rgba(60,40,20,.15)}
+.sum{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr))}
+.sum div{background:var(--ivory);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.sum span{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.sum b{font-family:var(--display);font-weight:400;font-size:1.4rem;font-variant-numeric:tabular-nums}
+.sum b.neg{color:var(--warn)}
+.list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.row{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.add{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));align-items:end}
+.add .wide{grid-column:1/-1}
+@media(min-width:620px){.add .wide{grid-column:span 2}}
+.brow{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center}
+.brow .nm{font-weight:500;min-width:0;overflow-wrap:anywhere}
+.brow .nums{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.brow .nums .field{min-height:42px;font-variant-numeric:tabular-nums}
+.bar{grid-column:1/-1;height:8px;border-radius:99px;background:var(--champagne);overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),#D9BC85);border-radius:99px}
+.bar i.over{background:var(--warn)}
+.grow{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center}
+.grow .nm{font-weight:500;overflow-wrap:anywhere;min-width:0}
+.grow .sub{color:var(--muted);font-size:.88rem}
+.grow .ctl{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.grow .ctl select{flex:1 1 140px;min-height:42px}
+.trow{display:grid;grid-template-columns:auto 1fr auto;gap:8px 12px;align-items:center}
+.trow input[type=checkbox]{width:24px;height:24px;accent-color:var(--gold-deep)}
+.trow .tx{min-width:0;overflow-wrap:anywhere}
+.trow.done .tx{text-decoration:line-through;color:var(--muted)}
+.trow .due{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:4px;font-size:.85rem;color:var(--muted)}
+.vrow{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center}
+.vrow .nm{font-weight:500;overflow-wrap:anywhere;min-width:0}
+.vrow .ph{font-variant-numeric:tabular-nums;user-select:all;color:var(--muted)}
+.vrow .acts{display:flex;gap:8px;align-items:center}
+.reset-line{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.progress{height:10px;border-radius:99px;background:var(--champagne);overflow:hidden}
+.progress i{display:block;height:100%;background:var(--good)}
+.stack{display:grid;gap:16px}
+
+footer .in{padding-top:8px;padding-bottom:110px;color:var(--muted);font-size:.85rem;text-align:center}
+@media(min-width:760px){footer .in{padding-bottom:40px}}
+
+.toast{position:fixed;left:50%;bottom:calc(88px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--ink);color:var(--ivory);padding:10px 18px;border-radius:999px;font-size:.92rem;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:50;max-width:calc(100vw - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media(min-width:760px){.toast{bottom:28px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.toast{transition:none}}
+</style>
+
+<header class="top">
+  <div class="in">
+    <a class="brand" href="#home">Wedding Studio</a>
+    <nav class="topnav" id="topnav" aria-label="Main"></nav>
+  </div>
+</header>
+<div class="notice"><div class="in"><strong>Prototype with demo data.</strong> All names, venues and phone numbers are fictional. RSVP and sharing are demonstrations; nothing is sent to anyone.</div></div>
+
+<main>
+<div class="in">
+
+<!-- HOME -->
+<div data-view id="view-home">
+  <section class="hero">
+    <div class="arch">
+      <p class="invoc" lang="hi">॥ श्री गणेशाय नमः ॥</p>
+      <p class="eyebrow" style="margin-top:8px">We are getting married</p>
+      <h1 class="names"><span data-bind="bride"></span><span class="amp">&amp;</span><span data-bind="groom"></span></h1>
+      <div class="orn"><i></i></div>
+      <p class="when" data-bind="dateLong"></p>
+      <p class="where" data-bind="venue"></p>
+      <div class="count" id="countdown" aria-live="off">
+        <div><b id="cd-d">0</b><span>Days</span></div>
+        <div><b id="cd-h">0</b><span>Hours</span></div>
+        <div><b id="cd-m">0</b><span>Mins</span></div>
+        <div><b id="cd-s">0</b><span>Secs</span></div>
+      </div>
+      <p class="cd-msg" id="cd-msg" hidden>The celebrations have begun. Shubh Vivah!</p>
+      <div class="btns">
+        <a class="btn primary" href="#invitation">View invitation</a>
+        <a class="btn" href="#rsvp">RSVP</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tiles" aria-label="Sections">
+    <a class="card tile" href="#events"><h3>Wedding events</h3><p>Mehendi, Haldi, Wedding and Reception with dates, times and venues.</p></a>
+    <a class="card tile" href="#invitation"><h3>Digital invitation</h3><p>A personalised card with a link you can copy and send.</p></a>
+    <a class="card tile" href="#planner"><h3>Wedding planner</h3><p>Budget, guest list, checklist with deadlines, and vendor contacts.</p></a>
+  </section>
+
+  <section class="card">
+    <div class="page-head"><p class="eyebrow">About this prototype</p><h3 style="font-size:1.5rem">What works and what is a demonstration</h3></div>
+    <ul class="status-list">
+      <li><span class="pill ok">Works</span><p><b>Planner, personalise form, countdown.</b> Everything you type is kept in this browser on this device only. It is not shared and not backed up.</p></li>
+      <li><span class="pill demo">Demo only</span><p><b>RSVP form.</b> It shows a thank-you screen, but nothing is stored or sent. Collecting real replies needs a database or form service.</p></li>
+      <li><span class="pill demo">Demo only</span><p><b>Invitation link.</b> It copies this page's address. Guests who open it see the demo details, not changes you made on your device.</p></li>
+      <li><span class="pill demo">Not built</span><p><b>Accounts, database, email or WhatsApp sending.</b> None of these exist in this prototype.</p></li>
+    </ul>
+  </section>
+</div>
+
+<!-- INVITATION -->
+<div data-view id="view-invitation" hidden>
+  <div class="page-head"><p class="eyebrow">Digital invitation</p><h2>Your invitation</h2><p>Preview the card your guests would see. Change the details below and the card updates.</p></div>
+
+  <article class="invite" aria-label="Wedding invitation">
+    <div class="invite-in">
+      <p class="invoc" lang="hi" style="font-family:var(--deva);color:var(--gold-deep);font-size:1.2rem">॥ श्री गणेशाय नमः ॥</p>
+      <p class="host">Together with their families</p>
+      <h2 class="names" style="font-family:var(--script)"><span data-bind="bride"></span><span class="amp">&amp;</span><span data-bind="groom"></span></h2>
+      <p class="req">request the pleasure of your company<br>at the celebration of their wedding</p>
+      <div class="orn"><i></i></div>
+      <p class="big-date" data-bind="dateLong"></p>
+      <div class="meta">
+        <span>Ceremony at <b data-bind="timeFmt"></b></span>
+        <span data-bind="venue"></span>
+      </div>
+      <div class="orn"><i></i></div>
+      <p class="note">Mehendi, Haldi and Reception details are on the Events page.</p>
+      <div class="btns" style="margin-top:16px"><a class="btn primary" href="#rsvp">RSVP now</a><a class="btn" href="#events">See all events</a></div>
+    </div>
+  </article>
+
+  <section class="card share">
+    <div><span class="pill demo">Demo</span> <h3 style="font-size:1.4rem;display:inline;margin-left:6px">Share this invitation</h3></div>
+    <div class="share-row">
+      <label class="lbl" for="share-link" style="width:100%;margin:0">Invitation link</label>
+      <input class="field" id="share-link" readonly>
+      <button class="btn primary" type="button" id="copy-link">Copy link</button>
+    </div>
+    <p class="note warn">Guests who open this link see the demo details. Edits made on your device are not carried inside the link. Sending a personalised invitation needs a published copy of this app with your details written into it (see the setup guide).</p>
+  </section>
+
+  <section class="card stack">
+    <div><span class="pill ok">Works</span> <h3 style="font-size:1.4rem;display:inline;margin-left:6px">Personalise the card</h3></div>
+    <p class="note">Saved in this browser only.</p>
+    <div class="grid2">
+      <div><label class="lbl" for="in-bride">Bride's name</label><input class="field" id="in-bride" maxlength="30"></div>
+      <div><label class="lbl" for="in-groom">Groom's name</label><input class="field" id="in-groom" maxlength="30"></div>
+      <div><label class="lbl" for="in-date">Wedding date</label><input class="field" id="in-date" type="date"></div>
+      <div><label class="lbl" for="in-time">Ceremony time</label><input class="field" id="in-time" type="time"></div>
+      <div style="grid-column:1/-1"><label class="lbl" for="in-venue">Venue</label><input class="field" id="in-venue" maxlength="90"></div>
+    </div>
+    <div><button class="btn small" type="button" id="reset-couple">Restore demo details</button></div>
+  </section>
+</div>
+
+<!-- RSVP -->
+<div data-view id="view-rsvp" hidden>
+  <div class="page-head"><p class="eyebrow">RSVP</p><h2>Will you join us?</h2><p>Please reply so we can plan seating and meals for every celebration.</p></div>
+
+  <section class="card">
+    <p style="margin-bottom:16px"><span class="pill demo">Demo only</span> <span class="note">Submitting shows a thank-you screen. Nothing is saved or sent.</span></p>
+    <form class="rsvp-form" id="rsvp-form" novalidate>
+      <div>
+        <label class="lbl" for="rsvp-name">Your name</label>
+        <input class="field" id="rsvp-name" autocomplete="name" maxlength="60" placeholder="Example: Demo Guest">
+        <p class="err" id="err-name" role="alert"></p>
+      </div>
+      <fieldset>
+        <legend class="lbl">Can you attend?</legend>
+        <div class="choice">
+          <label class="opt" for="att-yes"><input type="radio" name="att" id="att-yes" value="yes"><span>Joyfully accepts<small>I will be there</small></span></label>
+          <label class="opt" for="att-no"><input type="radio" name="att" id="att-no" value="no"><span>Regretfully declines<small>I cannot make it</small></span></label>
+        </div>
+        <p class="err" id="err-att" role="alert"></p>
+      </fieldset>
+      <div id="rsvp-more" class="rsvp-form" hidden>
+        <div>
+          <span class="lbl" id="guests-lbl">Number of guests, including you</span>
+          <div class="stepper" role="group" aria-labelledby="guests-lbl">
+            <button type="button" id="g-minus" aria-label="One fewer guest">&minus;</button>
+            <input class="field" id="rsvp-guests" type="number" min="1" max="10" value="1" inputmode="numeric" aria-labelledby="guests-lbl">
+            <button type="button" id="g-plus" aria-label="One more guest">+</button>
+          </div>
+        </div>
+        <fieldset>
+          <legend class="lbl">Functions you will attend</legend>
+          <div class="choice" id="rsvp-events"></div>
+          <p class="err" id="err-ev" role="alert"></p>
+        </fieldset>
+      </div>
+      <div>
+        <label class="lbl" for="rsvp-note">Message for the couple (optional)</label>
+        <textarea class="field" id="rsvp-note" rows="3" maxlength="300" placeholder="Dietary needs, blessings, or anything we should know"></textarea>
+      </div>
+      <div><button class="btn primary" type="submit">Send RSVP</button></div>
+    </form>
+    <div class="thanks" id="rsvp-done" hidden></div>
+  </section>
+</div>
+
+<!-- EVENTS -->
+<div data-view id="view-events" hidden>
+  <div class="page-head"><p class="eyebrow">Wedding events</p><h2>Four days of celebration</h2><p>Dates follow the wedding date you set. Venues are fictional examples.</p></div>
+  <div class="ev-grid" id="ev-list"></div>
+  <div class="btns"><a class="btn primary" href="#rsvp">RSVP for these events</a></div>
+</div>
+
+<!-- PLANNER -->
+<div data-view id="view-planner" hidden>
+  <div class="page-head"><p class="eyebrow">Wedding planner</p><h2>Plan every detail</h2><p><span class="pill ok">Works</span> Changes are saved in this browser on this device only. There is no account or online backup.</p></div>
+
+  <div class="tabs" role="tablist" aria-label="Planner sections">
+    <button role="tab" id="tab-budget" aria-selected="true" aria-controls="panel-budget" data-tab="budget">Budget</button>
+    <button role="tab" id="tab-guests" aria-selected="false" aria-controls="panel-guests" data-tab="guests">Guests</button>
+    <button role="tab" id="tab-tasks" aria-selected="false" aria-controls="panel-tasks" data-tab="tasks">Checklist</button>
+    <button role="tab" id="tab-vendors" aria-selected="false" aria-controls="panel-vendors" data-tab="vendors">Vendors</button>
+  </div>
+
+  <section id="panel-budget" role="tabpanel" aria-labelledby="tab-budget" class="stack">
+    <div class="card stack">
+      <div><label class="lbl" for="total-budget">Total budget (₹)</label><input class="field" id="total-budget" type="number" min="0" step="10000" inputmode="numeric" style="max-width:260px"></div>
+      <div class="sum" id="budget-sum"></div>
+    </div>
+    <ul class="list" id="budget-list"></ul>
+    <form class="card add" id="budget-add">
+      <div class="wide"><label class="lbl" for="b-name">New category</label><input class="field" id="b-name" maxlength="40" placeholder="Example: Honeymoon"></div>
+      <div><label class="lbl" for="b-planned">Planned (₹)</label><input class="field" id="b-planned" type="number" min="0" inputmode="numeric" placeholder="0"></div>
+      <div><button class="btn primary" type="submit" style="width:100%">Add category</button></div>
+    </form>
+  </section>
+
+  <section id="panel-guests" role="tabpanel" aria-labelledby="tab-guests" class="stack" hidden>
+    <div class="card"><div class="sum" id="guest-sum"></div></div>
+    <ul class="list" id="guest-list"></ul>
+    <form class="card add" id="guest-add">
+      <div class="wide"><label class="lbl" for="g-name">Guest or family name</label><input class="field" id="g-name" maxlength="50" placeholder="Example: Demo Family F"></div>
+      <div><label class="lbl" for="g-side">Side</label><select class="field" id="g-side"><option>Bride</option><option>Groom</option><option>Both</option></select></div>
+      <div><label class="lbl" for="g-count">People</label><input class="field" id="g-count" type="number" min="1" max="30" value="1" inputmode="numeric"></div>
+      <div class="wide"><button class="btn primary" type="submit" style="width:100%">Add guest</button></div>
+    </form>
+  </section>
+
+  <section id="panel-tasks" role="tabpanel" aria-labelledby="tab-tasks" class="stack" hidden>
+    <div class="card stack"><div class="sum" id="task-sum"></div><div class="progress" aria-hidden="true"><i id="task-bar" style="width:0"></i></div></div>
+    <ul class="list" id="task-list"></ul>
+    <form class="card add" id="task-add">
+      <div class="wide"><label class="lbl" for="t-text">New task</label><input class="field" id="t-text" maxlength="80" placeholder="Example: Book bridal makeup artist"></div>
+      <div><label class="lbl" for="t-due">Deadline</label><input class="field" id="t-due" type="date"></div>
+      <div><button class="btn primary" type="submit" style="width:100%">Add task</button></div>
+    </form>
+  </section>
+
+  <section id="panel-vendors" role="tabpanel" aria-labelledby="tab-vendors" class="stack" hidden>
+    <ul class="list" id="vendor-list"></ul>
+    <form class="card add" id="vendor-add">
+      <div class="wide"><label class="lbl" for="v-name">Vendor name</label><input class="field" id="v-name" maxlength="50" placeholder="Example: Sample Florist"></div>
+      <div><label class="lbl" for="v-cat">Category</label>
+        <select class="field" id="v-cat"><option>Catering</option><option>Photography</option><option>Decor</option><option>Mehendi</option><option>Music</option><option>Venue</option><option>Other</option></select></div>
+      <div><label class="lbl" for="v-phone">Phone</label><input class="field" id="v-phone" maxlength="20" inputmode="tel" placeholder="00000 00000"></div>
+      <div class="wide"><button class="btn primary" type="submit" style="width:100%">Add vendor</button></div>
+    </form>
+  </section>
+
+  <section class="card reset-line">
+    <p class="note">Start over with the demo planner data. This clears your changes on this device.</p>
+    <button class="btn small" type="button" id="reset-all">Reset planner</button>
+  </section>
+</div>
+
+</div>
+</main>
+
+<footer><div class="in">Demo data only. Replace the brand name and sample details before showing this to customers.</div></footer>
+
+<nav class="dock" id="dock" aria-label="Main"><div class="in" id="dock-in"></div></nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var KEY='wedding-studio-demo-v1';
+  function $(s,r){return (r||document).querySelector(s)}
+  function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  function inr(n){return '₹'+Number(n||0).toLocaleString('en-IN')}
+  var seq=0; function nid(){seq++;return 'i'+Date.now().toString(36)+seq}
+
+  var EVENTS=[
+    {key:'mehendi',name:'Mehendi',off:-2,time:'16:00',venue:'Rosewood Haveli Courtyard (fictional venue)',dress:'Greens and yellows'},
+    {key:'haldi',name:'Haldi',off:-1,time:'10:30',venue:'Family Home Garden (fictional venue)',dress:'Yellow or white, clothes that can stain'},
+    {key:'wedding',name:'Wedding',off:0,time:null,venue:null,dress:'Traditional Indian attire'},
+    {key:'reception',name:'Reception',off:1,time:'19:30',venue:'Grand Ballroom, Demo Palace Hotel (fictional venue)',dress:'Cocktail or Indian formal'}
+  ];
+
+  function defaults(){
+    return {
+      couple:{bride:'Aanya',groom:'Vihaan',date:'2027-02-13',time:'18:30',venue:'Gulmohar Lawns, Sample City (fictional venue)'},
+      budget:{total:1500000,items:[
+        {id:'b1',name:'Venue',planned:450000,spent:100000},
+        {id:'b2',name:'Catering',planned:375000,spent:0},
+        {id:'b3',name:'Decor and flowers',planned:150000,spent:0},
+        {id:'b4',name:'Photography and video',planned:120000,spent:30000},
+        {id:'b5',name:'Attire and jewellery',planned:180000,spent:60000},
+        {id:'b6',name:'Music and entertainment',planned:75000,spent:0},
+        {id:'b7',name:'Invitations and gifts',planned:45000,spent:5000},
+        {id:'b8',name:'Miscellaneous',planned:105000,spent:0}]},
+      guests:[
+        {id:'g1',name:'Demo Family A',side:'Bride',count:6,status:'Confirmed'},
+        {id:'g2',name:'Demo Family B',side:'Groom',count:5,status:'Confirmed'},
+        {id:'g3',name:'Demo Friend C',side:'Bride',count:2,status:'Invited'},
+        {id:'g4',name:'Demo Colleague D',side:'Groom',count:2,status:'Invited'},
+        {id:'g5',name:'Demo Family E',side:'Both',count:4,status:'Declined'}],
+      tasks:[
+        {id:'t1',text:'Fix wedding date and book venue',due:'2026-10-20',done:true},
+        {id:'t2',text:'Finalise guest list',due:'2026-11-05',done:false},
+        {id:'t3',text:'Book photographer and videographer',due:'2026-11-15',done:false},
+        {id:'t4',text:'Send digital invitations',due:'2026-11-20',done:false},
+        {id:'t5',text:'Choose outfits and jewellery',due:'2026-12-10',done:false},
+        {id:'t6',text:'Catering menu tasting',due:'2026-12-20',done:false},
+        {id:'t7',text:'Book mehendi artist',due:'2027-01-05',done:false},
+        {id:'t8',text:'Send reminders to guests',due:'2027-01-25',done:false},
+        {id:'t9',text:'Final vendor payments',due:'2027-02-08',done:false}],
+      vendors:[
+        {id:'v1',name:'Sample Caterers',cat:'Catering',phone:'00000 00001'},
+        {id:'v2',name:'Sample Photo Studio',cat:'Photography',phone:'00000 00002'},
+        {id:'v3',name:'Sample Decorators',cat:'Decor',phone:'00000 00003'},
+        {id:'v4',name:'Sample Mehendi Artist',cat:'Mehendi',phone:'00000 00004'},
+        {id:'v5',name:'Sample DJ and Dhol',cat:'Music',phone:'00000 00005'}]
+    };
+  }
+
+  var S=defaults();
+  function load(){
+    try{
+      var raw=localStorage.getItem(KEY); if(!raw) return;
+      var p=JSON.parse(raw); if(!p||typeof p!=='object') return;
+      ['couple','budget','guests','tasks','vendors'].forEach(function(k){ if(p[k]!==undefined) S[k]=p[k]; });
+    }catch(e){}
+  }
+  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(S)); }catch(e){} }
+  load();
+
+  /* ---------- dates ---------- */
+  function parseDate(s){var a=String(s).split('-').map(Number); return new Date(a[0],a[1]-1,a[2])}
+  function validDate(s){return /^\d{4}-\d{2}-\d{2}$/.test(s)&&!isNaN(parseDate(s).getTime())}
+  function evDate(off){var d=parseDate(S.couple.date); d.setDate(d.getDate()+off); return d}
+  function fmtLong(d){return d.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
+  function fmtTime(t){var a=String(t).split(':').map(Number); var h=a[0],m=a[1]||0; return (h%12||12)+':'+String(m).padStart(2,'0')+' '+(h>=12?'PM':'AM')}
+  function today(){var d=new Date(); return new Date(d.getFullYear(),d.getMonth(),d.getDate())}
+
+  /* ---------- toast + copy ---------- */
+  var toastT;
+  function toast(msg){var t=$('#toast'); t.textContent=msg; t.classList.add('on'); clearTimeout(toastT); toastT=setTimeout(function(){t.classList.remove('on')},2200)}
+  function copyText(text,okMsg,field){
+    function fallback(){ if(field){field.focus();field.select();} toast('Press and hold the text to copy it'); }
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){toast(okMsg)},fallback);
+      }else fallback();
+    }catch(e){fallback()}
+  }
+
+  /* ---------- nav + routing ---------- */
+  var VIEWS=[
+    {id:'home',label:'Home',icon:'<path d="M3 11l9-8 9 8v10h-6v-6H9v6H3z"/>'},
+    {id:'invitation',label:'Invite',icon:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>'},
+    {id:'rsvp',label:'RSVP',icon:'<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>'},
+    {id:'events',label:'Events',icon:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>'},
+    {id:'planner',label:'Planner',icon:'<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>'}
+  ];
+  function navHtml(){return VIEWS.map(function(v){return '<a href="#'+v.id+'" data-nav="'+v.id+'"><svg viewBox="0 0 24 24" aria-hidden="true">'+v.icon+'</svg><span>'+v.label+'</span></a>'}).join('')}
+  $('#topnav').innerHTML=navHtml(); $('#dock-in').innerHTML=navHtml();
+  var firstRoute=true;
+  function route(){
+    var h=location.hash.slice(1);
+    if(!VIEWS.some(function(v){return v.id===h})) h='home';
+    VIEWS.forEach(function(v){ $('#view-'+v.id).hidden=(v.id!==h); });
+    $$('[data-nav]').forEach(function(a){ if(a.getAttribute('data-nav')===h) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+    if(!firstRoute) window.scrollTo(0,0);
+    firstRoute=false;
+  }
+  window.addEventListener('hashchange',route);
+
+  /* ---------- bindings ---------- */
+  function bind(){
+    var c=S.couple, d=validDate(c.date)?parseDate(c.date):parseDate(defaults().couple.date);
+    var map={bride:c.bride||'Bride',groom:c.groom||'Groom',dateLong:fmtLong(d),timeFmt:fmtTime(c.time||'18:30'),venue:c.venue||'Venue to be announced'};
+    $$('[data-bind]').forEach(function(el){ el.textContent=map[el.getAttribute('data-bind')]; });
+    document.title='Wedding Invitation Studio';
+    renderEvents(); updateRsvpLabels();
+    tick();
+  }
+
+  /* ---------- countdown ---------- */
+  function tick(){
+    var c=S.couple; if(!validDate(c.date)) return;
+    var target=new Date(c.date+'T'+(c.time||'00:00')+':00+05:30').getTime();
+    var diff=target-Date.now();
+    var box=$('#countdown'), msg=$('#cd-msg');
+    if(isNaN(diff)||diff<=0){ box.hidden=true; msg.hidden=false; return; }
+    box.hidden=false; msg.hidden=true;
+    var s=Math.floor(diff/1000);
+    $('#cd-d').textContent=Math.floor(s/86400);
+    $('#cd-h').textContent=Math.floor(s%86400/3600);
+    $('#cd-m').textContent=Math.floor(s%3600/60);
+    $('#cd-s').textContent=s%60;
+  }
+  setInterval(tick,1000);
+
+  /* ---------- personalise form ---------- */
+  var fields={bride:'#in-bride',groom:'#in-groom',date:'#in-date',time:'#in-time',venue:'#in-venue'};
+  function fillCouple(){ Object.keys(fields).forEach(function(k){ $(fields[k]).value=S.couple[k]||''; }); }
+  Object.keys(fields).forEach(function(k){
+    $(fields[k]).addEventListener('input',function(e){
+      var v=e.target.value;
+      if(k==='date'&&!validDate(v)) return;
+      S.couple[k]=v; save(); bind();
+    });
+  });
+  $('#reset-couple').addEventListener('click',function(){ S.couple=defaults().couple; save(); fillCouple(); bind(); toast('Demo details restored'); });
+
+  /* ---------- share ---------- */
+  function shareUrl(){ return location.href.split('#')[0]+'#invitation'; }
+  $('#share-link').value=shareUrl();
+  $('#copy-link').addEventListener('click',function(){ copyText(shareUrl(),'Link copied',$('#share-link')); });
+  $('#share-link').addEventListener('focus',function(e){e.target.select()});
+
+  /* ---------- events ---------- */
+  function renderEvents(){
+    $('#ev-list').innerHTML=EVENTS.map(function(e){
+      var d=evDate(e.off), time=e.time||S.couple.time||'18:30', venue=e.venue||S.couple.venue||'Venue to be announced';
+      return '<article class="card ev"><div class="ev-date"><b>'+d.getDate()+'</b><span>'+d.toLocaleDateString('en-IN',{month:'short'})+'</span></div>'+
+        '<div><h3>'+esc(e.name)+'</h3><dl><dt>When</dt><dd>'+esc(fmtLong(d))+', '+esc(fmtTime(time))+'</dd><dt>Where</dt><dd>'+esc(venue)+'</dd><dt>Dress code</dt><dd>'+esc(e.dress)+'</dd></dl></div></article>';
+    }).join('');
+  }
+
+  /* ---------- rsvp ---------- */
+  function buildRsvpEvents(){
+    $('#rsvp-events').innerHTML=EVENTS.map(function(e){
+      return '<label class="opt" for="ev-'+e.key+'"><input type="checkbox" id="ev-'+e.key+'" value="'+e.key+'"><span>'+esc(e.name)+'<small data-evl="'+e.key+'"></small></span></label>';
+    }).join('');
+  }
+  function updateRsvpLabels(){
+    EVENTS.forEach(function(e){ var el=$('[data-evl="'+e.key+'"]'); if(el) el.textContent=evDate(e.off).toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'}); });
+  }
+  buildRsvpEvents();
+  function setErr(id,msg){ $('#'+id).textContent=msg||''; }
+  function attVal(){ var r=$('input[name="att"]:checked'); return r?r.value:''; }
+  $$('input[name="att"]').forEach(function(r){ r.addEventListener('change',function(){ $('#rsvp-more').hidden=(attVal()!=='yes'); setErr('err-att',''); }); });
+  function setGuests(n){ n=Math.max(1,Math.min(10,Math.round(Number(n))||1)); $('#rsvp-guests').value=n; }
+  $('#g-minus').addEventListener('click',function(){ setGuests(Number($('#rsvp-guests').value)-1); });
+  $('#g-plus').addEventListener('click',function(){ setGuests(Number($('#rsvp-guests').value)+1); });
+  $('#rsvp-guests').addEventListener('change',function(e){ setGuests(e.target.value); });
+  $('#rsvp-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=$('#rsvp-name').value.trim(), att=attVal(), ok=true;
+    setErr('err-name',''); setErr('err-att',''); setErr('err-ev','');
+    if(!name){ setErr('err-name','Please enter your name.'); ok=false; }
+    if(!att){ setErr('err-att','Please choose whether you can attend.'); ok=false; }
+    var evs=EVENTS.filter(function(x){ return $('#ev-'+x.key).checked; });
+    if(att==='yes'&&!evs.length){ setErr('err-ev','Choose at least one function.'); ok=false; }
+    if(!ok) return;
+    var note=$('#rsvp-note').value.trim();
+    var html='<h3>Thank you, '+esc(name)+'</h3>'+
+      '<p>'+(att==='yes'?'We look forward to celebrating with you.':'We will miss you and thank you for letting us know.')+'</p>'+
+      '<dl><dt>Response</dt><dd>'+(att==='yes'?'Joyfully accepts':'Regretfully declines')+'</dd>'+
+      (att==='yes'?'<dt>Guests</dt><dd>'+esc($('#rsvp-guests').value)+'</dd><dt>Functions</dt><dd>'+esc(evs.map(function(x){return x.name}).join(', '))+'</dd>':'')+
+      (note?'<dt>Message</dt><dd>'+esc(note)+'</dd>':'')+'</dl>'+
+      '<p class="note warn"><b>Demo only.</b> This response was not saved or sent to anyone.</p>'+
+      '<button class="btn small" type="button" id="rsvp-again">Fill in another response</button>';
+    $('#rsvp-done').innerHTML=html; $('#rsvp-done').hidden=false; $('#rsvp-form').hidden=true;
+    $('#rsvp-again').addEventListener('click',function(){
+      $('#rsvp-form').reset(); $('#rsvp-more').hidden=true; $('#rsvp-done').hidden=true; $('#rsvp-form').hidden=false;
+    });
+  });
+
+  /* ---------- planner tabs ---------- */
+  $$('[data-tab]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=b.getAttribute('data-tab');
+      $$('[data-tab]').forEach(function(x){ x.setAttribute('aria-selected',x===b?'true':'false'); });
+      ['budget','guests','tasks','vendors'].forEach(function(p){ $('#panel-'+p).hidden=(p!==t); });
+    });
+  });
+
+  /* ---------- budget ---------- */
+  function renderBudget(){
+    var B=S.budget, planned=0, spent=0;
+    B.items.forEach(function(i){ planned+=Number(i.planned)||0; spent+=Number(i.spent)||0; });
+    var left=B.total-spent, free=B.total-planned;
+    $('#total-budget').value=B.total;
+    $('#budget-sum').innerHTML=
+      '<div><span>Planned</span><b>'+inr(planned)+'</b></div>'+
+      '<div><span>Spent</span><b>'+inr(spent)+'</b></div>'+
+      '<div><span>Left to spend</span><b class="'+(left<0?'neg':'')+'">'+inr(left)+'</b></div>'+
+      '<div><span>'+(free<0?'Over plan by':'Unplanned')+'</span><b class="'+(free<0?'neg':'')+'">'+inr(Math.abs(free))+'</b></div>';
+    $('#budget-list').innerHTML=B.items.length?B.items.map(function(i){
+      var pct=i.planned>0?Math.min(100,Math.round(i.spent/i.planned*100)):(i.spent>0?100:0), over=i.spent>i.planned;
+      return '<li class="row brow"><span class="nm">'+esc(i.name)+(over?' <span class="pill late">Over</span>':'')+'</span>'+
+        '<button class="x" type="button" data-act="bdel" data-id="'+i.id+'" aria-label="Remove '+esc(i.name)+'">&times;</button>'+
+        '<div class="nums"><div><label class="lbl" for="bp-'+i.id+'">Planned (₹)</label><input class="field" id="bp-'+i.id+'" type="number" min="0" inputmode="numeric" data-act="bfield" data-f="planned" data-id="'+i.id+'" value="'+(Number(i.planned)||0)+'"></div>'+
+        '<div><label class="lbl" for="bs-'+i.id+'">Spent (₹)</label><input class="field" id="bs-'+i.id+'" type="number" min="0" inputmode="numeric" data-act="bfield" data-f="spent" data-id="'+i.id+'" value="'+(Number(i.spent)||0)+'"></div></div>'+
+        '<div class="bar" role="img" aria-label="'+pct+' percent of planned amount spent"><i class="'+(over?'over':'')+'" style="width:'+pct+'%"></i></div></li>';
+    }).join(''):'<li class="empty">No categories yet. Add your first one below.</li>';
+  }
+  $('#total-budget').addEventListener('change',function(e){ S.budget.total=Math.max(0,Number(e.target.value)||0); save(); renderBudget(); });
+  $('#budget-add').addEventListener('submit',function(e){
+    e.preventDefault(); var n=$('#b-name').value.trim(); if(!n){ $('#b-name').focus(); return; }
+    S.budget.items.push({id:nid(),name:n,planned:Math.max(0,Number($('#b-planned').value)||0),spent:0});
+    $('#b-name').value=''; $('#b-planned').value=''; save(); renderBudget();
+  });
+
+  /* ---------- guests ---------- */
+  function renderGuests(){
+    var inv=0,conf=0,decl=0,pend=0;
+    S.guests.forEach(function(g){ var c=Number(g.count)||0; inv+=c; if(g.status==='Confirmed')conf+=c; else if(g.status==='Declined')decl+=c; else pend+=c; });
+    $('#guest-sum').innerHTML='<div><span>Invited</span><b>'+inv+'</b></div><div><span>Confirmed</span><b>'+conf+'</b></div><div><span>Awaiting</span><b>'+pend+'</b></div><div><span>Declined</span><b>'+decl+'</b></div>';
+    $('#guest-list').innerHTML=S.guests.length?S.guests.map(function(g){
+      var opts=['Invited','Confirmed','Declined'].map(function(s){return '<option'+(s===g.status?' selected':'')+'>'+s+'</option>'}).join('');
+      return '<li class="row grow"><div><div class="nm">'+esc(g.name)+'</div><div class="sub">'+esc(g.side)+' side &middot; '+(Number(g.count)||0)+(Number(g.count)===1?' person':' people')+'</div></div>'+
+        '<button class="x" type="button" data-act="gdel" data-id="'+g.id+'" aria-label="Remove '+esc(g.name)+'">&times;</button>'+
+        '<div class="ctl"><label class="lbl" for="gs-'+g.id+'" style="margin:0">RSVP status</label><select class="field" id="gs-'+g.id+'" data-act="gstatus" data-id="'+g.id+'">'+opts+'</select></div></li>';
+    }).join(''):'<li class="empty">No guests yet. Add your first guest below.</li>';
+  }
+  $('#guest-add').addEventListener('submit',function(e){
+    e.preventDefault(); var n=$('#g-name').value.trim(); if(!n){ $('#g-name').focus(); return; }
+    S.guests.push({id:nid(),name:n,side:$('#g-side').value,count:Math.max(1,Math.min(30,Number($('#g-count').value)||1)),status:'Invited'});
+    $('#g-name').value=''; $('#g-count').value=1; save(); renderGuests();
+  });
+
+  /* ---------- tasks ---------- */
+  function renderTasks(){
+    var t0=today(), done=S.tasks.filter(function(t){return t.done}).length, total=S.tasks.length;
+    var overdue=S.tasks.filter(function(t){return !t.done&&t.due&&parseDate(t.due)<t0}).length;
+    $('#task-sum').innerHTML='<div><span>Done</span><b>'+done+' of '+total+'</b></div><div><span>Overdue</span><b class="'+(overdue?'neg':'')+'">'+overdue+'</b></div>';
+    $('#task-bar').style.width=(total?Math.round(done/total*100):0)+'%';
+    var sorted=S.tasks.slice().sort(function(a,b){ if(a.done!==b.done) return a.done?1:-1; return String(a.due||'9999').localeCompare(String(b.due||'9999')); });
+    $('#task-list').innerHTML=sorted.length?sorted.map(function(t){
+      var chip='';
+      if(t.due&&validDate(t.due)){
+        var dd=parseDate(t.due), days=Math.round((dd-t0)/86400000);
+        var lab=dd.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+        if(t.done) chip='<span>'+lab+'</span>';
+        else if(days<0) chip='<span>'+lab+'</span><span class="pill late">Overdue by '+(-days)+(days===-1?' day':' days')+'</span>';
+        else if(days===0) chip='<span>'+lab+'</span><span class="pill late">Due today</span>';
+        else chip='<span>'+lab+'</span><span class="pill">In '+days+(days===1?' day':' days')+'</span>';
+      }
+      return '<li class="row trow'+(t.done?' done':'')+'"><input type="checkbox" id="tc-'+t.id+'" data-act="tdone" data-id="'+t.id+'"'+(t.done?' checked':'')+' aria-label="Mark done: '+esc(t.text)+'">'+
+        '<div class="tx"><label for="tc-'+t.id+'">'+esc(t.text)+'</label><div class="due">'+chip+'</div></div>'+
+        '<button class="x" type="button" data-act="tdel" data-id="'+t.id+'" aria-label="Remove '+esc(t.text)+'">&times;</button></li>';
+    }).join(''):'<li class="empty">No tasks yet. Add your first one below.</li>';
+  }
+  $('#task-add').addEventListener('submit',function(e){
+    e.preventDefault(); var n=$('#t-text').value.trim(); if(!n){ $('#t-text').focus(); return; }
+    var due=$('#t-due').value; S.tasks.push({id:nid(),text:n,due:validDate(due)?due:'',done:false});
+    $('#t-text').value=''; $('#t-due').value=''; save(); renderTasks();
+  });
+
+  /* ---------- vendors ---------- */
+  function renderVendors(){
+    $('#vendor-list').innerHTML=S.vendors.length?S.vendors.map(function(v){
+      return '<li class="row vrow"><div style="min-width:0"><div class="nm">'+esc(v.name)+'</div><div style="margin-top:4px"><span class="pill">'+esc(v.cat)+'</span></div></div>'+
+        '<button class="x" type="button" data-act="vdel" data-id="'+v.id+'" aria-label="Remove '+esc(v.name)+'">&times;</button>'+
+        '<div class="acts" style="grid-column:1/-1;justify-content:space-between"><span class="ph">'+(v.phone?esc(v.phone):'No phone added')+'</span>'+
+        (v.phone?'<button class="btn small" type="button" data-act="vcopy" data-id="'+v.id+'">Copy number</button>':'')+'</div></li>';
+    }).join(''):'<li class="empty">No vendors yet. Add your first one below.</li>';
+  }
+  $('#vendor-add').addEventListener('submit',function(e){
+    e.preventDefault(); var n=$('#v-name').value.trim(); if(!n){ $('#v-name').focus(); return; }
+    S.vendors.push({id:nid(),name:n,cat:$('#v-cat').value,phone:$('#v-phone').value.trim()});
+    $('#v-name').value=''; $('#v-phone').value=''; save(); renderVendors();
+  });
+
+  /* ---------- delegated actions ---------- */
+  function find(arr,id){ for(var i=0;i<arr.length;i++) if(arr[i].id===id) return arr[i]; }
+  function drop(arr,id){ for(var i=0;i<arr.length;i++) if(arr[i].id===id){ arr.splice(i,1); return; } }
+  document.addEventListener('click',function(e){
+    var el=e.target.closest('[data-act]'); if(!el) return;
+    var a=el.getAttribute('data-act'), id=el.getAttribute('data-id');
+    if(a==='bdel'){ drop(S.budget.items,id); save(); renderBudget(); }
+    else if(a==='gdel'){ drop(S.guests,id); save(); renderGuests(); }
+    else if(a==='tdel'){ drop(S.tasks,id); save(); renderTasks(); }
+    else if(a==='vdel'){ drop(S.vendors,id); save(); renderVendors(); }
+    else if(a==='vcopy'){ var v=find(S.vendors,id); if(v) copyText(v.phone,'Number copied'); }
+  });
+  document.addEventListener('change',function(e){
+    var el=e.target.closest('[data-act]'); if(!el) return;
+    var a=el.getAttribute('data-act'), id=el.getAttribute('data-id');
+    if(a==='bfield'){ var i=find(S.budget.items,id); if(i){ i[el.getAttribute('data-f')]=Math.max(0,Number(el.value)||0); save(); renderBudget(); } }
+    else if(a==='gstatus'){ var g=find(S.guests,id); if(g){ g.status=el.value; save(); renderGuests(); } }
+    else if(a==='tdone'){ var t=find(S.tasks,id); if(t){ t.done=el.checked; save(); renderTasks(); } }
+  });
+
+  /* two-step reset (the viewer blocks confirm dialogs) */
+  var rt;
+  $('#reset-all').addEventListener('click',function(e){
+    var b=e.target;
+    if(b.getAttribute('data-arm')!=='1'){
+      b.setAttribute('data-arm','1'); b.textContent='Tap again to confirm';
+      clearTimeout(rt); rt=setTimeout(function(){ b.removeAttribute('data-arm'); b.textContent='Reset planner'; },4000);
+      return;
+    }
+    clearTimeout(rt); b.removeAttribute('data-arm'); b.textContent='Reset planner';
+    var d=defaults(); S.budget=d.budget; S.guests=d.guests; S.tasks=d.tasks; S.vendors=d.vendors; save();
+    renderBudget(); renderGuests(); renderTasks(); renderVendors(); toast('Planner reset to demo data');
+  });
+
+  /* ---------- start ---------- */
+  fillCouple(); bind(); renderBudget(); renderGuests(); renderTasks(); renderVendors(); route();
+})();
+</script>
+
+</body></html>
